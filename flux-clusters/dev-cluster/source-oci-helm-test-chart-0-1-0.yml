@@ -6,7 +6,5 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-  secretRef:
-    name: nodix-auth
   type: oci
   url: oci://registry.nordix.org/nephio/test-chart
