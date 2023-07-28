@@ -7,4 +7,4 @@ metadata:
 spec:
   interval: 1m0s
   type: oci
-  url: oci://registry.nordix.org/nephio/test-chart
+  url: oci://registry.nordix.org/nephio

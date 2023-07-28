@@ -7,7 +7,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: ./
+      chart: test-chart
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
