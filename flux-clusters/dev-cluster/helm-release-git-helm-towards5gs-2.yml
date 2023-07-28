@@ -1,0 +1,116 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: helm-release-git-helm-towards5gs-2
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: charts/free5gc
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: GitRepository
+        name: source-git-helm-towards5gs-helm-efiacor
+  interval: 10s
+  targetNamespace: test003
+  values:
+    deployAmf: true
+    deployAusf: true
+    deployDbPython: true
+    deployMongoDb: false
+    deployN3iwf: false
+    deployNrf: true
+    deployNssf: true
+    deployPcf: true
+    deploySmf: true
+    deployUdm: true
+    deployUdr: true
+    deployUpf: true
+    deployWebui: true
+    free5gc-nrf:
+      db:
+        enabled: false
+    global:
+      amf:
+        n2if:
+          ipAddress: 10.100.50.249
+        service:
+          ngap:
+            enabled: false
+            name: amf-n2
+            nodeport: 31412
+            port: 38412
+            protocol: SCTP
+            type: NodePort
+      n2network:
+        cidr: 29
+        enabled: true
+        excludeIP: 10.100.50.254
+        gatewayIP: 10.100.50.254
+        masterIf: eth0
+        name: n2network
+        subnetIP: 10.100.50.248
+        type: ipvlan
+      n3network:
+        cidr: 29
+        enabled: true
+        excludeIP: 10.100.50.238
+        gatewayIP: 10.100.50.238
+        masterIf: eth0
+        name: n3network
+        subnetIP: 10.100.50.232
+        type: ipvlan
+      n4network:
+        cidr: 29
+        enabled: true
+        excludeIP: 10.100.50.246
+        gatewayIP: 10.100.50.246
+        masterIf: eth0
+        name: n4network
+        subnetIP: 10.100.50.240
+        type: ipvlan
+      n6network:
+        cidr: 24
+        enabled: true
+        excludeIP: 10.100.100.254
+        gatewayIP: 10.100.100.1
+        masterIf: eth1
+        name: n6network
+        subnetIP: 10.100.100.0
+        type: ipvlan
+      n9network:
+        cidr: 29
+        enabled: true
+        excludeIP: 10.100.50.230
+        gatewayIP: 10.100.50.230
+        masterIf: eth0
+        name: n9network
+        subnetIP: 10.100.50.224
+        type: ipvlan
+      name: free5gc
+      nrf:
+        service:
+          name: nrf-nnrf
+          nodePort: "30800"
+          port: "8000"
+          type: ClusterIP
+      sbi:
+        scheme: http
+      smf:
+        n4if:
+          ipAddress: 10.100.50.244
+      userPlaneArchitecture: single
+    mongodb:
+      auth:
+        enabled: false
+      fullnameOverride: mongodb
+      persistence:
+        mountPath: /bitnami/mongodb/data/db/
+        size: 6Gi
+      service:
+        name: mongodb
+        nodePort: "30017"
+        port: 27017
+        type: ClusterIP
+      useStatefulSet: true

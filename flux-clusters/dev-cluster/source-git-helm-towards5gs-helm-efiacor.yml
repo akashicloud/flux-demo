@@ -2,10 +2,10 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: source-git-helm-towards5gs-helm
+  name: source-git-helm-towards5gs-helm-efiacor
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 10s
   ref:
     branch: main
-  url: https://github.com/Orange-OpenSource/towards5gs-helm
+  url: https://github.com/efiacor/free5gc.git
