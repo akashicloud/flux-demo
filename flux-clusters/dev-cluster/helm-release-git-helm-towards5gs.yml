@@ -7,7 +7,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: charts/ueransim
+      chart: charts/free5gc
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: GitRepository
